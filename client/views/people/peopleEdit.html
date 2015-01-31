@@ -1,0 +1,4 @@
+<template name="PeopleEdit">
+  <h2>Edit People:</h2>
+  {{> quickForm collection="People" doc=this id="updatePeopleForm" type="update"}} {{> quickRemoveButton collection="People" _id=this._id onSuccess=onDelete class="btn btn-danger"}}
+</template>
