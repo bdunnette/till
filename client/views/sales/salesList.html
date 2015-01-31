@@ -1,0 +1,11 @@
+<template name="SalesList">
+  <h2>New Sales:</h2>
+  {{> quickForm collection="Sales" id="insertSalesForm" type="insert"}}
+  <ul>
+    {{#each this}}
+    <li>
+      <a href="{{pathFor 'SalesView'}}">{{title}} - {{description}}</a>
+    </li>
+    {{/each}}
+  </ul>
+</template>
