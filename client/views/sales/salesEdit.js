@@ -24,3 +24,15 @@ AutoForm.hooks({
     },
   }
 });
+
+Router.route('/sales/:_id/edit', function () {
+  this.render('SalesEdit', {
+    data: function () {
+      return Sales.findOne({
+        _id: this.params._id
+      });
+    }
+  });
+}, {
+  name: 'SalesEdit'
+});

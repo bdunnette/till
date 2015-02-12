@@ -1,7 +1,14 @@
 <template name="SalesView">
-  <h2>{{title}}</h2>
-  <p>{{description}}</p>
+  <h2>{{customerName sale.customer}}</h2>
+  <div class="sales-items">
+    Items:
+    <ul>
+    {{#each sale.items}}
+      <li>{{this.quantity}} {{productName this.product}}</li>
+    {{/each}}
+    </ul>
+  </div>
   <a href="{{pathFor 'SalesEdit'}}">
-    <button class="btn btn-primary">Edit</button>
+    Edit
   </a>
 </template>
