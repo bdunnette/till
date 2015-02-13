@@ -1,4 +1,34 @@
 <template name="SalesEdit">
   <h2>Edit Sales:</h2>
-  {{> quickForm collection="Sales" doc=this id="updateSalesForm" type="update"}} {{> quickRemoveButton collection="Sales" _id=this._id onSuccess=onDelete class="btn btn-danger"}}
+  
+  <label for="saleCustomer">Customer:</label>
+  <select class="customer-select">
+    {{#each customerOptions}}
+      <option value="{{value}}" selected="{{isSaleCustomer .. value}}">{{label}}</option>
+    {{/each}}
+  </select>
+  
+  <form class="add-item">
+    <select class="product-select">
+      {{#each productOptions}}
+        <option value="{{value}}">{{label}}</option>
+      {{/each}}
+    </select>
+    <input type="number" name="eachPrice" id="eachPrice" placeholder="Each price?" />
+    <input type="number" name="quantity" placeholder="How many?" value=1 />
+  </form>
+  
+  {{> saleLines}}
+</template>
+
+<template name="saleCustomer">
+  
+</template>
+
+<template name="saleItemForm">
+  
+</template>
+
+<template name="saleLines">
+  
 </template>

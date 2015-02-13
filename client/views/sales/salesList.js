@@ -5,11 +5,14 @@ Template.SalesList.helpers({
 });
 
 Template.SalesList.events({
-  'change .product-select': function (event) {
-    console.log(this);
-    var selectedProduct = Products.findOne({_id: this.value});
-    console.log(selectedProduct);
-    this.siblingField("eachPrice").value = selectedProduct.listPrice;
+  'click button.new-sale': function () {
+    Sales.insert({}, function (error, saleId) {
+      console.log(error);
+      console.log(saleId);
+      Router.go('SalesEdit', {
+        _id: saleId
+      });
+    });
   }
 });
 
