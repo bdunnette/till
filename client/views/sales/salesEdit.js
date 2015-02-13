@@ -33,6 +33,20 @@ Template.SalesEdit.events({
     var selectedProduct = Products.findOne(event.target.value);
     console.log(selectedProduct);
     $('#eachPrice').val(selectedProduct.listPrice);
+  },
+  
+  'submit .add-item': function(event) {
+    console.log(this);
+    console.log(event.target.product.value);
+    console.log(event.target.eachPrice.value);
+    console.log(event.target.quantity.value);
+    var newItem = {
+      product: event.target.product.value,
+      extendedPrice: event.target.eachPrice.value * event.target.quantity.value
+    };
+    console.log(newItem);
+    Sales.update(this._id, {$push: {items: newItem}});
+    event.preventDefault();
   }
 });
 

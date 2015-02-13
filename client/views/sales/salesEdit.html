@@ -9,26 +9,23 @@
   </select>
   
   <form class="add-item">
-    <select class="product-select">
+    <select name="product" class="product-select">
       {{#each productOptions}}
         <option value="{{value}}">{{label}}</option>
       {{/each}}
     </select>
     <input type="number" name="eachPrice" id="eachPrice" placeholder="Each price?" />
     <input type="number" name="quantity" placeholder="How many?" value=1 />
+    <input type="submit" value="Add Item">
   </form>
   
   {{> saleLines}}
 </template>
 
-<template name="saleCustomer">
-  
-</template>
-
-<template name="saleItemForm">
-  
-</template>
-
 <template name="saleLines">
-  
+  <ul>
+  {{#each items}}
+  <li>{{product}} {{quantity}} {{eachPrice}} {{extendedPrice}}</li>
+  {{/each}}
+  </ul>
 </template>
