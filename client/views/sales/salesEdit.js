@@ -5,17 +5,17 @@ Template.SalesEdit.helpers({
       Router.go('SalesList');
     };
   },
-  
+
   customerOptions: function(){
     return People.find().fetch().map(function (c) {
       return {label: c.name, value: c._id};
     });
   },
-  
+
   isSaleCustomer: function(parent, customerId){
     return parent.customer == customerId;
   },
-  
+
   //list all products for use in select box
   productOptions: function(){
     return Products.find().map(function (p) {
@@ -28,21 +28,17 @@ Template.SalesEdit.events({
   'change .customer-select': function (event) {
     Sales.update(this._id, {$set: {customer: event.target.value}});
   },
-  
+
   'change .product-select': function (event) {
     var selectedProduct = Products.findOne(event.target.value);
-    console.log(selectedProduct);
     $('#eachPrice').val(selectedProduct.listPrice);
   },
-  
+
   'submit .add-item': function(event) {
-    console.log(this);
-    console.log(event.target.product.value);
-    console.log(event.target.eachPrice.value);
-    console.log(event.target.quantity.value);
     var newItem = {
       product: event.target.product.value,
-      extendedPrice: event.target.eachPrice.value * event.target.quantity.value
+      quantity: event.target.quantity.value,
+      eachPrice: event.target.eachPrice.value
     };
     console.log(newItem);
     Sales.update(this._id, {$push: {items: newItem}});
