@@ -24,6 +24,12 @@ Template.SalesEdit.helpers({
   }
 });
 
+Template.saleLines.helpers({
+  productName: function(productId){
+    return Products.findOne({_id: productId}).name;
+  }
+});
+
 Template.SalesEdit.events({
   'change .customer-select': function (event) {
     Sales.update(this._id, {$set: {customer: event.target.value}});

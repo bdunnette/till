@@ -4,7 +4,7 @@
     Items:
     <ul>
     {{#each sale.items}}
-      <li>{{this.quantity}} {{productName this.product}}</li>
+      <li>{{this.quantity}} {{productName this.product}} @ {{this.eachPrice}} - {{this.extendedPrice}}</li>
     {{/each}}
     </ul>
   </div>
