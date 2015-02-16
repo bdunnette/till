@@ -29,10 +29,17 @@
       <th>Quantity</th>
       <th>Unit Price</th>
       <th>Total Price</th>
+      <th>Tax</th>
     </thead>
     <tbody>
       {{#each items}}
-      <tr><td>{{productName product}}</td> <td>{{quantity}}</td> <td>{{eachPrice}}</td> <td>{{extendedPrice}}</td></tr>
+      <tr>
+      <td>{{productName product}}</td>
+      <td>{{quantity}}</td>
+      <td>{{eachPrice}}</td>
+      <td>{{extendedPrice}}</td>
+      <td>{{taxAmount}}</td>
+      </tr>
       {{/each}}
     </tbody>
   </table>
