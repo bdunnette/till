@@ -49,6 +49,14 @@ Template.SalesEdit.events({
     console.log(newItem);
     Sales.update(this._id, {$push: {items: newItem}});
     event.preventDefault();
+  },
+  
+  'click .delete-item': function(event, template) {
+    event.preventDefault();
+    var saleId = event.currentTarget.name;
+    var item = this;
+    // Since we can't $pull an item from the sale's items on the client, we'll need to call the removeItem method on the server
+    Meteor.call('removeItem', saleId, item);
   }
 });
 
