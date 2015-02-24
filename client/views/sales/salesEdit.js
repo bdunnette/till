@@ -21,6 +21,10 @@ Template.SalesEdit.helpers({
     return Products.find().map(function (p) {
       return {label: p.name, value: p._id};
     });
+  },
+  
+  saleId: function(template) {
+    console.log(template);
   }
 });
 
@@ -32,6 +36,8 @@ Template.saleLines.helpers({
 
 Template.SalesEdit.events({
   'change .customer-select': function (event) {
+    console.log(event.target.value);
+    console.log(this);
     Sales.update(this._id, {$set: {customer: event.target.value}});
   },
 
@@ -40,15 +46,16 @@ Template.SalesEdit.events({
     $('#eachPrice').val(selectedProduct.listPrice);
   },
 
-  'submit .add-item': function(event) {
+  'submit .add-item': function(event, template) {
+    event.preventDefault();
     var newItem = {
       product: event.target.product.value,
       quantity: event.target.quantity.value,
       eachPrice: event.target.eachPrice.value
     };
     console.log(newItem);
-    Sales.update(this._id, {$push: {items: newItem}});
-    event.preventDefault();
+    console.log(template.data);
+    Sales.update({_id: this._id}, {$push: {items: newItem}});
   },
   
   'click .delete-item': function(event, template) {

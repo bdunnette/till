@@ -14,10 +14,13 @@
         <option value="{{value}}">{{label}}</option>
       {{/each}}
     </select>
+    <input type="text" name="saleId" value="{{saleId}}"/>
     <input type="number" name="eachPrice" id="eachPrice" placeholder="Each price?" />
     <input type="number" name="quantity" placeholder="How many?" value=1 />
     <input type="submit" value="Add Item">
   </form>
+  
+  {{> quickForm collection="Sales" doc=this id="saleForm" type="update" autosave=true}}
 
   {{> saleLines}}
 </template>
