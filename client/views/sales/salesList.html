@@ -3,7 +3,7 @@
   <ul>
     {{#each this}}
     <li>
-      <a href="{{pathFor 'SalesView'}}">{{this.date}} {{customerName this.customer}} - {{lines}}</a>
+      <a href="{{pathFor 'SalesView'}}">{{this._id}} {{this.date}} {{this.customer}} {{this.items}}</a>
     </li>
     {{/each}}
   </ul>
