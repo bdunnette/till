@@ -1,6 +1,6 @@
 <template name="ProductsList">
   <h2>New Products:</h2>
-  {{> quickForm collection="Products" id="insertProductsForm" type="insert"}}
+  {{> quickForm collection="Products" id="insertProductsForm" type="insert" fields="name, listPrice"}}
   <ul>
     {{#each this}}
     <li>

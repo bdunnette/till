@@ -1,26 +1,19 @@
 <template name="SalesEdit">
   <h2>Edit Sales:</h2>
 
-  <label for="saleCustomer">Customer:</label>
-  <select class="customer-select">
-    {{#each customerOptions}}
-      <option value="{{value}}" selected="{{isSaleCustomer .. value}}">{{label}}</option>
-    {{/each}}
-  </select>
+  {{> quickForm collection="Sales" doc=this id="saleForm" type="update" fields="customer, date" autosave=true}}
 
   <form class="add-item">
+    <h4>Add an item:</h4>
     <select name="product" class="product-select">
       {{#each productOptions}}
         <option value="{{value}}">{{label}}</option>
       {{/each}}
     </select>
-    <input type="text" name="saleId" value="{{saleId}}"/>
     <input type="number" name="eachPrice" id="eachPrice" placeholder="Each price?" />
     <input type="number" name="quantity" placeholder="How many?" value=1 />
     <input type="submit" value="Add Item">
   </form>
-  
-  {{> quickForm collection="Sales" doc=this id="saleForm" type="update" autosave=true}}
 
   {{> saleLines}}
 </template>
