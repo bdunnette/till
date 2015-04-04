@@ -1,14 +1,27 @@
 Sales = new Mongo.Collection('sales');
 
+Sales.helpers({
+  customer: function() {
+    return People.findOne(this.customerId);
+  },
+  
+  subtotal: function() {
+      var subtotal = 0;
+      for (var i in this.items) {
+          subtotal += this.items[i].extendedPrice;
+      }
+      return subtotal;
+  }
+});
 
 if (Meteor.isServer) {
   Sales.allow({
     insert: function (userId, doc) {
-      return false;
+      return true;
     },
 
     update: function (userId, doc, fieldNames, modifier) {
-      return false;
+      return true;
     },
 
     remove: function (userId, doc) {
@@ -18,11 +31,11 @@ if (Meteor.isServer) {
 
   Sales.deny({
     insert: function (userId, doc) {
-      return true;
+      return false;
     },
 
     update: function (userId, doc, fieldNames, modifier) {
-      return true;
+      return false;
     },
 
     remove: function (userId, doc) {
