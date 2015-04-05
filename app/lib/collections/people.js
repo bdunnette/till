@@ -6,7 +6,8 @@ PersonSchema = new SimpleSchema({
     },
     email: {
         type: String,
-        optional: true
+        optional: true,
+        regEx: SimpleSchema.RegEx.Email
     }
 });
 

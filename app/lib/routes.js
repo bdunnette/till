@@ -32,3 +32,10 @@ Router.route('people', {
   action: 'action',
   where: 'client'
 });
+
+Router.route('taxes', {
+  name: 'taxes',
+  controller: 'TaxesController',
+  action: 'action',
+  where: 'client'
+});
