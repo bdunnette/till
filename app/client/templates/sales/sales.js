@@ -2,6 +2,13 @@
 /* Sales: Event Handlers */
 /*****************************************************************************/
 Template.Sales.events({
+  'click .new-sale': function () {
+    Sales.insert({}, function (error, saleId) {
+      Router.go('saleEdit', {
+        _id: saleId
+      });
+    });
+  }
 });
 
 /*****************************************************************************/

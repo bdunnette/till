@@ -1,0 +1,21 @@
+<template name="SaleEdit">
+  <h1>Find me in app/client/templates/sales/sale_edit/sale_edit</h1>
+  {{> quickForm doc=sale type="update" collection="Sales" autosave=true fields="customer,date" id="saleInfoForm" buttonContent=false}}
+
+  {{> quickForm doc=sale type="update-pushArray" collection="Sales" scope="items" id="saleItemForm" omitFields="extendedPrice"}}
+
+  <table class="table table-striped">
+    <tbody>
+  {{#each sale.items}}
+  <tr>
+    <td>{{productName this.product}}</td>
+    <td>{{this.quantity}}</td>
+    <td>{{this.eachPrice}}</td>
+    <td>{{this.extendedPrice}}</td>
+  </tr>
+  {{/each}}
+</tbody>
+</table>
+<h2>Subtotal: {{sale.subtotal}}</h2>
+<h2>Tax ({{sale.taxRate}}): {{sale.taxAmount}}</h2>
+</template>

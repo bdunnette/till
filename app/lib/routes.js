@@ -19,6 +19,13 @@ Router.route('sales', {
   where: 'client'
 });
 
+Router.route('sales/:_id/edit', {
+  name: 'saleEdit',
+  controller: 'SaleEditController',
+  action: 'action',
+  where: 'client'
+});
+
 Router.route('products', {
   name: 'products',
   controller: 'ProductsController',

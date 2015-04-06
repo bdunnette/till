@@ -1,7 +1,7 @@
 <template name="Products">
   <h1>Find me in app/client/templates/products/products</h1>
-  {{> quickForm collection="Products" type="insert" id="productForm"}}
-  
+  {{> quickForm collection="Products" type="insert" id="productForm" omitFields="description,taxable"}}
+
   {{#each products}}
     <p>{{name}}: {{listPrice}}</p>
   {{/each}}

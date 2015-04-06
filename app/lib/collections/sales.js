@@ -70,7 +70,7 @@ Sales.helpers({
   customer: function() {
     return People.findOne(this.customerId);
   },
-  
+
   subtotal: function() {
       var subtotal = 0;
       for (var i in this.items) {
@@ -78,7 +78,7 @@ Sales.helpers({
       }
       return subtotal;
   },
-  
+
   taxAmount: function() {
       var taxAmount = this.subtotal() * this.taxRate;
       return parseFloat(taxAmount.toFixed(2));

@@ -1,4 +1,6 @@
 <template name="Sales">
-  <h1>Find me in app/client/templates/sales/sales</h1>
-  {{> quickForm collection="Sales" type="insert" id="saleForm" omitFields="date,taxRate"}}
+  <button class="btn btn-success new-sale">New Sale</button>
+  {{#each sales}}
+<p>{{this.date}} {{this.subtotal}} {{this.taxAmount}}</p>
+  {{/each}}
 </template>
