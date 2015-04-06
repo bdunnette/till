@@ -15,6 +15,10 @@ Template.SaleEdit.helpers({
 
   asDollars: function(amt) {
     return '$' + amt.toFixed(2);
+  },
+
+  asPercent: function(pct) {
+    return pct * 100 + '%'
   }
 });
 

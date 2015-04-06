@@ -25,13 +25,13 @@
       {{/each}}
       <tr>
         <td colspan="3"></td>
-        <td><strong>Subtotal</strong></td>
-        <td><strong>{{asDollars sale.subtotal}}</strong></td>
+        <td><strong>Sales Tax ({{asPercent sale.taxRate}})</strong></td>
+        <td><strong>{{asDollars sale.taxAmount}}</strong></td>
       </tr>
       <tr>
         <td colspan="3"></td>
-        <td><strong>Sales Tax ({{sale.taxRate}})</strong></td>
-        <td><strong>{{asDollars sale.taxAmount}}</strong></td>
+        <td><strong>Total</strong></td>
+        <td><strong>{{asDollars sale.subtotal}}</strong></td>
       </tr>
     </tbody>
 </table>
