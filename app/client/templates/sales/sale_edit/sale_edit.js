@@ -2,6 +2,12 @@
 /* SaleEdit: Event Handlers */
 /*****************************************************************************/
 Template.SaleEdit.events({
+  'click .remove-item': function() {
+    console.log(this);
+    var sale = Blaze.getData().sale;
+    console.log(sale);
+    Sales.update({_id: sale._id}, {$pullAll: {items: [this]}}, function(err, result){console.log(err); console.log(result);});
+  }
 });
 
 /*****************************************************************************/
