@@ -2,9 +2,15 @@
 /* SaleEdit: Event Handlers */
 /*****************************************************************************/
 Template.SaleEdit.events({
-  'click .remove-item': function() {
+  'change .product-select': function(event, template) {
+    console.log(event.target.value);
+    var product = Products.findOne(event.target.value);
+    $("input[name=eachPrice]").val(product.listPrice);
+  },
+
+  'click .remove-item': function(event, template) {
     console.log(this);
-    var sale = Blaze.getData().sale;
+    var sale = template.data.sale;
     console.log(sale);
     Sales.update({_id: sale._id}, {$pullAll: {items: [this]}}, function(err, result){console.log(err); console.log(result);});
   }
