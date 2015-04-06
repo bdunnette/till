@@ -11,6 +11,10 @@ Template.SaleEdit.helpers({
   productName: function(productId) {
     var product = Products.findOne(productId);
     return product.name;
+  },
+
+  asDollars: function(amt) {
+    return '$' + amt.toFixed(2);
   }
 });
 
