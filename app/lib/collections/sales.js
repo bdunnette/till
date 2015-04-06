@@ -14,7 +14,16 @@ SalesSchema = new SimpleSchema({
   },
   date: {
     type: Date,
-    defaultValue: new Date()
+    defaultValue: new Date(),
+    autoform:{
+      afFieldInput: {
+        type: "datetime-local"
+      }
+    }
+  },
+  taxIncluded: {
+    type: Boolean,
+    defaultValue: false
   },
   taxRate:{
     type: Number,
