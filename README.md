@@ -1,2 +1,3 @@
 # till
-A basic point-of-sale application
+
+Sales and donation tracking for Free Geek Twin Cities

@@ -1,0 +1,8 @@
+<template name="Products">
+  <h1>Find me in app/client/templates/products/products</h1>
+  {{> quickForm collection="Products" type="insert" id="productForm"}}
+  
+  {{#each products}}
+    <p>{{name}}: {{listPrice}}</p>
+  {{/each}}
+</template>
