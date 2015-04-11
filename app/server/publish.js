@@ -10,7 +10,9 @@ Meteor.publish('sales', function (/* args */) {
 });
 
 Meteor.publish('sale', function (saleId) {
-  return Sales.findOne(saleId);
+  return Sales.find({
+    _id: saleId
+  });
 });
 
 Meteor.publish('products', function (/* args */) {
