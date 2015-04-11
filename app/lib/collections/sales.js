@@ -1,7 +1,15 @@
 Sales = new Mongo.Collection('sales');
 
 SalesSchema = new SimpleSchema({
-  customer: {
+  shortCode: {
+    type: String,
+    unique: true,
+    index: true,
+    autoValue: function(){
+      return Random.id(4);
+    }
+  },
+  customerId: {
     type: String,
     optional: true,
     autoform:{
@@ -30,8 +38,11 @@ SalesSchema = new SimpleSchema({
     decimal: true,
     autoValue: function(){
       // Return tax defined for the current date, or 0 if none is defined
-      var currentTax = Taxes.findOne({"startDate": {$lte: new Date()}, "endDate": {$gt: new Date()}})||{
-          taxRate: 0
+      var currentTax = Taxes.findOne({
+        "startDate": {$lte: new Date()},
+        "endDate": {$gt: new Date()}
+      })||{
+        taxRate: 0
       };
       return currentTax.taxRate;
     }
@@ -76,8 +87,8 @@ SalesSchema = new SimpleSchema({
 Sales.attachSchema(SalesSchema);
 
 Sales.helpers({
-  customerInfo: function() {
-    var saleCustomer = People.findOne(this.customer);
+  customer: function() {
+    var saleCustomer = People.findOne(this.customerId);
     return saleCustomer;
   },
 

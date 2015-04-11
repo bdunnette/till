@@ -1,8 +1,9 @@
 <template name="SaleEdit">
-  <h1>Find me in app/client/templates/sales/sale_edit/sale_edit</h1>
-  {{> quickForm doc=sale type="update" collection="Sales" autosave=true fields="customer,date" id="saleInfoForm" buttonContent=false}}
+  <h3>Sale Info:</h3>
+  {{> quickForm doc=sale type="update" collection="Sales" autosave=true fields="customerId,date" id="saleInfoForm" template="bootstrap3-inline" buttonContent=false}}
 
-  {{> quickForm doc=sale type="update-pushArray" collection="Sales" scope="items" id="saleItemForm" omitFields="extendedPrice"}}
+  <h3>Add an Item:</h3>
+  {{> quickForm doc=sale type="update-pushArray" collection="Sales" scope="items" id="saleItemForm" template="bootstrap3-inline" omitFields="extendedPrice"}}
 
   <table class="table table-striped">
     <thead>
