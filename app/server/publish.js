@@ -9,6 +9,10 @@ Meteor.publish('sales', function (/* args */) {
   return Sales.find();
 });
 
+Meteor.publish('sale', function (saleId) {
+  return Sales.findOne(saleId);
+});
+
 Meteor.publish('products', function (/* args */) {
   return Products.find();
 });

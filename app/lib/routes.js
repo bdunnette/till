@@ -46,3 +46,11 @@ Router.route('taxes', {
   action: 'action',
   where: 'client'
 });
+
+
+Router.route('sales/:_id', {
+  name: 'saleView',
+  controller: 'SaleViewController',
+  action: 'action',
+  where: 'client'
+});

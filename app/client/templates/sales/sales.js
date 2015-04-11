@@ -28,3 +28,16 @@ Template.Sales.rendered = function () {
 
 Template.Sales.destroyed = function () {
 };
+
+Template.registerHelper('productName', function(productId) {
+    var product = Products.findOne(productId);
+    return product.name;
+});
+
+Template.registerHelper('asDollars', function(amt) {
+    return '$' + amt.toFixed(2);
+});
+
+Template.registerHelper('asPercent', function(pct) {
+    return pct * 100 + '%';
+});

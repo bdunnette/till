@@ -1,0 +1,38 @@
+<template name="SaleView">
+    <h3>Sold To: {{sale.customerInfo.name}}</h3>
+    <h3>Sale Date: {{sale.date}}</h3>
+    
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Extended Price</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each sale.items}}
+        <tr>
+          <td>{{productName this.product}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.quantity}}</td>
+          <td>{{asDollars this.eachPrice}}</td>
+          <td>{{asDollars this.extendedPrice}}</td>
+        </tr>
+      {{/each}}
+      <tr>
+        <td colspan="3"></td>
+        <td><strong>Sales Tax ({{asPercent sale.taxRate}})</strong></td>
+        <td><strong>{{asDollars sale.taxAmount}}</strong></td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <td><strong>Total</strong></td>
+        <td><strong>{{asDollars sale.subtotal}}</strong></td>
+      </tr>
+    </tbody>
+    </table>
+</template>

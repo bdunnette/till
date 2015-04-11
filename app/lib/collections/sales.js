@@ -76,8 +76,9 @@ SalesSchema = new SimpleSchema({
 Sales.attachSchema(SalesSchema);
 
 Sales.helpers({
-  customer: function() {
-    return People.findOne(this.customerId);
+  customerInfo: function() {
+    var saleCustomer = People.findOne(this.customer);
+    return saleCustomer;
   },
 
   subtotal: function() {
