@@ -81,7 +81,30 @@ SalesSchema = new SimpleSchema({
       var extendedPrice = this.siblingField("quantity").value * this.siblingField("eachPrice").value;
       return extendedPrice;
     }
-  }
+  },
+  payments: {
+    type: Array,
+    optional: true
+  },
+  'payments.$':{type:Object},
+  'payments.$.type': {
+    type: String,
+    label: "Payment Type",
+    autoform:{
+      options: [
+        {label: "Cash", value: "cash"},
+        {label: "Credit Card", value: "cc"},
+        {label: "Volunteer Credit", value: "vc"}
+      ],
+      afFieldInput: {
+        firstOption: "(Select a payment type)"
+      }
+    }
+  },
+  'payments.$.amount': {
+    type: Number,
+    decimal: true
+  },
 });
 
 Sales.attachSchema(SalesSchema);

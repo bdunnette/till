@@ -4,6 +4,9 @@
 
   <h3>Add an Item:</h3>
   {{> quickForm doc=sale type="update-pushArray" collection="Sales" scope="items" id="saleItemForm" template="bootstrap3-inline" omitFields="extendedPrice"}}
+  
+  <h3>Payments:</h3>
+  {{> quickForm doc=sale type="update-pushArray" collection="Sales" scope="payments" id="salePaymentForm" template="bootstrap3-inline"}}
 
   <table class="table table-striped">
     <thead>
@@ -35,6 +38,24 @@
         <td><strong>{{asDollars sale.subtotal}}</strong></td>
       </tr>
     </tbody>
-</table>
+  </table>
+  
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Payment Type</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
 
+    <tbody>
+      {{#each sale.payments}}
+        <tr>
+          <td>{{this.type}}</td>
+          <td>{{asDollars this.amount}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </template>
