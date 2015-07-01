@@ -20,9 +20,9 @@
 
 <template name="SaleRow">
   <tr>
-    <td><a href="{{pathFor route='saleView'}}">{{this.date}}</a></td>
-    <td>{{this.customer.name}}</td>
-    <td>{{this.subtotal}}</td>
-    <td>{{this.taxAmount}}</td>
+    <td><a href="{{pathFor route='saleView'}}">{{relativeDate date}}</a></td>
+    <td>{{customer.name}}</td>
+    <td>{{asDollars subtotal}}</td>
+    <td>{{asDollars taxAmount}}</td>
   </tr>
 </template>

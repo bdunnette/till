@@ -41,3 +41,11 @@ Template.registerHelper('asDollars', function(amt) {
 Template.registerHelper('asPercent', function(pct) {
     return pct * 100 + '%';
 });
+
+Template.registerHelper('asDate', function(date) {
+    return moment(date).format('llll');
+});
+
+Template.registerHelper('relativeDate', function(date) {
+    return moment(date).calendar();
+});

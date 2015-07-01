@@ -1,27 +1,12 @@
 <template name="SaleView">
     <h3>Sold To: {{sale.customer.name}}</h3>
-    <h3>Sale Date: {{sale.date}}</h3>
+    <h3>Sale Date: {{asDate sale.date}}</h3>
     
     <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Extended Price</th>
-      </tr>
-    </thead>
 
     <tbody>
       {{#each sale.items}}
-        <tr>
-          <td>{{productName this.product}}</td>
-          <td>{{this.description}}</td>
-          <td>{{this.quantity}}</td>
-          <td>{{asDollars this.eachPrice}}</td>
-          <td>{{asDollars this.extendedPrice}}</td>
-        </tr>
+        {{> SaleItemRow}}
       {{/each}}
       <tr>
         <td colspan="3"></td>
@@ -35,4 +20,26 @@
       </tr>
     </tbody>
     </table>
+</template>
+
+<template name="SaleItemRow">
+  <tr>
+    <td>{{productName this.product}}</td>
+    <td>{{this.description}}</td>
+    <td>{{this.quantity}}</td>
+    <td>{{asDollars this.eachPrice}}</td>
+    <td>{{asDollars this.extendedPrice}}</td>
+  </tr>
+</template>
+
+<template name="SaleItemHeader">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Extended Price</th>
+    </tr>
+  </thead>
 </template>
