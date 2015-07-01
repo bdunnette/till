@@ -1,8 +1,24 @@
 <template name="Products">
-  <h1>Find me in app/client/templates/products/products</h1>
+  <h2>New Product</h2>
   {{> quickForm collection="Products" type="insert" id="productForm" omitFields="description,taxable"}}
 
+  <h3>Available Products:</h3>
+  <table class="table table-striped">
+    <thead><tr>
+      <th>Name</th>
+      <th>List Price</th>
+    </tr></thead>
+    <tbody>
   {{#each products}}
-    <p>{{name}}: {{listPrice}}</p>
+    {{> ProductRow}}
   {{/each}}
+  </tbody>
+  </table>
+</template>
+
+<template name="ProductRow">
+  <tr>
+    <td>{{name}}</td>
+    <td>{{listPrice}}</td>
+  </tr>
 </template>

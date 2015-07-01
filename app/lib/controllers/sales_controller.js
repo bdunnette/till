@@ -16,7 +16,7 @@ SalesController = RouteController.extend({
     // return a global data context like this:
     // Items.findOne({_id: this.params._id});
     return {
-      sales: Sales.find()
+      sales: Sales.find({}, {sort:{date:-1}})
     };
   },
 
