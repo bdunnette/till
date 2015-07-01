@@ -1,6 +1,29 @@
 <template name="Sales">
   <button class="btn btn-success new-sale">New Sale</button>
+  <h2>Recent Sales</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <th>Date</th>
+      <th>Customer Name</th>
+      <th>Subtotal</th>
+      <th>Tax</th>
+      </tr>
+    </thead>
+    <tbody>
   {{#each sales}}
-<p><a href="{{pathFor route='saleView'}}">{{this.date}} {{this.subtotal}} {{this.taxAmount}}</a></p>
+    {{> SaleRow}}
   {{/each}}
+  </tbody>
+  </table>
+</template>
+
+<template name="SaleRow">
+  <tr>
+    <td><a href="{{pathFor route='saleView'}}">{{this.date}}</a></td>
+    <td>{{this.customer.name}}</td>
+    <td>{{this.subtotal}}</td>
+    <td>{{this.taxAmount}}</td>
+    
+  </tr>
 </template>
