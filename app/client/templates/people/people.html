@@ -2,7 +2,22 @@
   <h2>New Person</h2>
   {{> quickForm collection="People" type="insert" id="personForm"}}
   
+  <table class="table table-striped">
+    <thead><tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr></thead>
+    <tbody>
   {{#each people}}
-    <p>{{name}}: <a href="mailto:{{email}}" target=_blank>{{email}}</a></p>
+    {{> PersonRow}}
   {{/each}}
+  </tbody>
+  </table>
+</template>
+
+<template name="PersonRow">
+  <tr>
+    <td>{{name}}</td>
+    <td>{{email}}</td>
+  </tr>
 </template>
