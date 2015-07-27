@@ -1,46 +1,16 @@
 <template name="SaleEdit">
   <h3>Sale Info:</h3>
   {{> quickForm doc=sale type="update" collection="Sales" autosave=true fields="customerId,date" id="saleInfoForm" template="bootstrap3-inline" buttonContent=false}}
-
-  <h3>Add an Item:</h3>
-  {{> quickForm doc=sale type="update-pushArray" collection="Sales" scope="items" id="saleItemForm" template="bootstrap3-inline" omitFields="extendedPrice"}}
   
+  {{> SaleEditItems}}
+  
+  {{> SaleEditPayments}}
+</template>
+
+<template name="SaleEditPayments">
   <h3>Payments:</h3>
   {{> quickForm doc=sale type="update-pushArray" collection="Sales" scope="payments" id="salePaymentForm" template="bootstrap3-inline"}}
 
-  <table class="table table-striped">
-    <thead>
-      <th>Item</th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Unit Price</th>
-      <th>Extended Price</th>
-    </thead>
-
-    <tbody>
-      {{#each sale.items}}
-        <tr>
-          <td>{{productName this.product}}</td>
-          <td>{{this.description}}</td>
-          <td>{{this.quantity}}</td>
-          <td>{{asDollars this.eachPrice}}</td>
-          <td>{{asDollars this.extendedPrice}} <button class="btn btn-danger remove-item pull-right">X</button></td>
-        </tr>
-      {{/each}}
-      <tr>
-        <td colspan="3"></td>
-        <td><strong>Sales Tax ({{asPercent sale.taxRate}})</strong></td>
-        <td><strong>{{asDollars sale.taxAmount}}</strong></td>
-      </tr>
-      <tr>
-        <td colspan="3"></td>
-        <td><strong>Total</strong></td>
-        <td><strong>{{asDollars sale.subtotal}}</strong></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -56,6 +26,34 @@
           <td>{{asDollars this.amount}}</td>
         </tr>
       {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="SaleEditItems">
+  <h3>Add an Item:</h3>
+  {{> quickForm doc=sale type="update-pushArray" collection="Sales" scope="items" id="saleItemForm" template="bootstrap3-inline" omitFields="extendedPrice"}}
+  
+  <table class="table table-striped">
+    {{> SaleItemHeader}}
+
+    <tbody>
+      {{#each sale.items}}
+        <tr>
+          {{> SaleItemRow}}
+          <td><button class="btn btn-danger remove-item pull-right">X</button></td>
+        </tr>
+      {{/each}}
+      <tr>
+        <td colspan="3"></td>
+        <td><strong>Sales Tax ({{asPercent sale.taxRate}})</strong></td>
+        <td><strong>{{asDollars sale.taxAmount}}</strong></td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <td><strong>Total</strong></td>
+        <td><strong>{{asDollars sale.subtotal}}</strong></td>
+      </tr>
     </tbody>
   </table>
 </template>

@@ -6,7 +6,9 @@
 
     <tbody>
       {{#each sale.items}}
+      <tr>
         {{> SaleItemRow}}
+        </tr>
       {{/each}}
       <tr>
         <td colspan="3"></td>
@@ -23,13 +25,11 @@
 </template>
 
 <template name="SaleItemRow">
-  <tr>
     <td>{{productName this.product}}</td>
     <td>{{this.description}}</td>
     <td>{{this.quantity}}</td>
     <td>{{asDollars this.eachPrice}}</td>
     <td>{{asDollars this.extendedPrice}}</td>
-  </tr>
 </template>
 
 <template name="SaleItemHeader">
