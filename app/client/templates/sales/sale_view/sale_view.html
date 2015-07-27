@@ -1,14 +1,14 @@
 <template name="SaleView">
-    <h3>Sold To: {{sale.customer.name}}</h3>
-    <h3>Sale Date: {{asDate sale.date}}</h3>
-    
-    <table class="table table-striped">
+  <h3>Sold To: {{sale.customer.name}}</h3>
+  <h3>Sale Date: {{asDate sale.date}}</h3>
+
+  <table class="table table-striped">
 
     <tbody>
       {{#each sale.items}}
       <tr>
         {{> SaleItemRow}}
-        </tr>
+      </tr>
       {{/each}}
       <tr>
         <td colspan="3"></td>
@@ -21,15 +21,15 @@
         <td><strong>{{asDollars sale.subtotal}}</strong></td>
       </tr>
     </tbody>
-    </table>
+  </table>
 </template>
 
 <template name="SaleItemRow">
-    <td>{{productName this.product}}</td>
-    <td>{{this.description}}</td>
-    <td>{{this.quantity}}</td>
-    <td>{{asDollars this.eachPrice}}</td>
-    <td>{{asDollars this.extendedPrice}}</td>
+  <td>{{productName this.product}}</td>
+  <td>{{this.description}}</td>
+  <td>{{this.quantity}}</td>
+  <td>{{asDollars this.eachPrice}}</td>
+  <td>{{asDollars this.extendedPrice}}</td>
 </template>
 
 <template name="SaleItemHeader">
