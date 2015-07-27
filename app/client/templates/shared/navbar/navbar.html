@@ -16,8 +16,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="{{pathFor route='sales'}}">Sales</a></li>
-        <li><a href="{{pathFor route='products'}}">Products</a></li>
         <li><a href="{{pathFor route='people'}}">People</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{#if isInRole 'admin'}}<li><a href="/admin"><i class="fa fa-cogs"></i> Admin</a></li>{{/if}}
+        {{> loginButtons}}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

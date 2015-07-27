@@ -1,10 +1,3 @@
-/**
- * Meteor.publish('items', function (param1, param2) {
- *  this.ready();
- * });
- */
-
-
 Meteor.publish('sales', function (/* args */) {
   return Sales.find();
 });

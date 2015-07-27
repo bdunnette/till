@@ -1,0 +1,7 @@
+AdminConfig = {
+collections:
+{
+Products: {},
+Taxes: {}
+}
+}

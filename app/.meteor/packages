@@ -16,4 +16,8 @@ momentjs:moment
 dburles:collection-helpers
 random
 simple:rest
-msavin:mongol
+yogiben:admin
+accounts-github
+ian:accounts-ui-bootstrap-3
+accounts-password
+simple:rest-accounts-password
