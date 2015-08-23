@@ -21,3 +21,7 @@ accounts-github
 ian:accounts-ui-bootstrap-3
 accounts-password
 simple:rest-accounts-password
+urigo:angular
+angularui:angular-ui-router
+angularui:angular-ui-bootstrap
+angularui:ui-select
